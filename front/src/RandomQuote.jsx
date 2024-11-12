@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaPlus, FaRandom } from "react-icons/fa";
 import QuoteModal from "./QuoteModal";
+import { URL } from "./Constants";
 
 const classButton =
   "bg-white text-purple-500 p-4 rounded-full shadow-lg hover:bg-purple-200";
@@ -14,7 +15,7 @@ export default function RandomQuote() {
 
   async function fetchQuote() {
     setLoading(true);
-    const res = await fetch("http://localhost:8000/quotes/");
+    const res = await fetch(`${URL}/quotes`);
     const data = await res.json();
     if (data.length !== 0) {
       const quote = data[Math.floor(Math.random() * data.length)];
@@ -25,7 +26,7 @@ export default function RandomQuote() {
 
   async function onSave({ newQuote, newAuthor, quoteDate }) {
     setLoading(true);
-    const res = await fetch("http://localhost:8000/quotes/", {
+    const res = await fetch(`${URL}/quotes/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
