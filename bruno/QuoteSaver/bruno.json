@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "QuoteSaver",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
